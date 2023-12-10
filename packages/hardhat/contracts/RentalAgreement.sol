@@ -1,18 +1,14 @@
 // RentalAgreement.sol
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.15 <0.9.0;
+pragma solidity >=0.4.22 <0.9.0;
 
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IPool} from "@aave/core-v3/contracts/interfaces/IPool.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-// import "./RentalCashFlowNFT.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-import "@prb/math/contracts/PRBMathUD60x18.sol";
+import "./RentalCashFlowNFT.sol";
 
-contract RentalAgreement1 {
+contract RentalAgreement {
     using SafeERC20 for IERC20;
     // Handel the tenancy logic
     address public landlord;
@@ -31,7 +27,7 @@ contract RentalAgreement1 {
     IPoolAddressesProvider public immutable ADDRESSES_PROVIDER;
     IPool public immutable POOL;
     // Handle the NFT logic
-    RentalCashFlowNFT1 public rentalCashFlowNFT;
+    RentalCashFlowNFT public rentalCashFlowNFT;
 
     event TenantEnteredAgreement(
         uint256 depositLocked,
@@ -82,7 +78,7 @@ contract RentalAgreement1 {
         tokenAddress = _tokenUsedToPay;
         ADDRESSES_PROVIDER = IPoolAddressesProvider(_addressesProvider);
         POOL = IPool(ADDRESSES_PROVIDER.getPool());
-        rentalCashFlowNFT = RentalCashFlowNFT1(_rentalCashFlowNFTaddress);
+        rentalCashFlowNFT = RentalCashFlowNFT(_rentalCashFlowNFTaddress);
     }
 
     function enterAgreementAsTenant(
@@ -216,143 +212,5 @@ contract RentalAgreement1 {
             houseAddress,
             tokenAddress
         );
-    }
-}
-
-contract RentalFactory1 {
-    mapping(address => RentalAgreement1[]) public rentalsByOwner;
-
-    event NewRentalDeployed(
-        address contractAddress,
-        address landlord,
-        address tenant,
-        string houseName,
-        string houseAddress
-    );
-
-    function createNewRental(
-        address _tenantAddress,
-        uint256 _rent,
-        uint256 _deposit,
-        uint256 _rentGuarantee,
-        address _tokenUsedToPay,
-        string memory _houseName,
-        string memory _houseAddress,
-        string memory _leaseTerm, // Added lease term in function parameters
-        address _addressesProvider,
-        address _rentalCashFlowNFTaddress
-    ) public {
-        RentalAgreement1 newRental = new RentalAgreement1(
-            msg.sender,
-            _tenantAddress,
-            _rent,
-            _deposit,
-            _rentGuarantee,
-            _tokenUsedToPay,
-            _houseName,
-            _houseAddress,
-            _leaseTerm,
-            _addressesProvider,
-            _rentalCashFlowNFTaddress
-        );
-
-        emit NewRentalDeployed(
-            address(newRental),
-            msg.sender,
-            _tenantAddress,
-            _houseName,
-            _houseAddress
-        );
-        rentalsByOwner[msg.sender].push(newRental);
-    }
-
-    function getRentalsCountByOwner(
-        address _owner
-    ) public view returns (uint256) {
-        return rentalsByOwner[_owner].length;
-    }
-}
-
-contract RentalCashFlowNFT1 is ERC721 {
-    using PRBMathUD60x18 for uint256;
-    mapping(uint256 => address) public tokenToRentalAgreement;
-    AggregatorV3Interface internal dataFeed;
-
-    struct RentalAgreementDetails {
-        address landlord;
-        address tenant;
-        address rentalAgreementAddress;
-        uint256 rent;
-        uint256 deposit;
-        uint256 rentGuarantee;
-        string leaseTerm;
-        string houseName;
-        string houseAddress;
-        address tokenAddress;
-        uint256 initialPrice;
-    }
-
-    mapping(uint256 => RentalAgreementDetails) public rentalAgreements;
-
-    constructor() ERC721("RentalCashFlowNFT", "RCF") {
-        dataFeed = AggregatorV3Interface(
-            0x7422A64372f95F172962e2C0f371E0D9531DF276
-        );
-    }
-
-    function safeMint(
-        address landlord,
-        address tenant,
-        address rentalAgreementAddress,
-        uint256 rent,
-        uint256 deposit,
-        uint256 rentGuarantee,
-        string memory leaseTerm,
-        string memory houseName,
-        string memory houseAddress,
-        address tokenAddress
-    ) public {
-        uint256 tokenId = uint256(uint160(rentalAgreementAddress));
-        _safeMint(landlord, tokenId);
-        tokenToRentalAgreement[tokenId] = rentalAgreementAddress;
-        rentalAgreements[tokenId] = RentalAgreementDetails({
-            landlord: landlord,
-            tenant: tenant,
-            rentalAgreementAddress: rentalAgreementAddress,
-            rent: rent,
-            deposit: deposit,
-            rentGuarantee: rentGuarantee,
-            leaseTerm: leaseTerm,
-            houseName: houseName,
-            houseAddress: houseAddress,
-            tokenAddress: tokenAddress,
-            initialPrice: calculateInitialPrice(rent)
-        });
-    }
-
-    function calculateInitialPrice(uint256 Rent) public view returns (uint256) {
-        uint256 annualRiskFreeInterestRate = getInterestRate();
-        // This function calculates the 12month DCF value of the rent using smart contract
-        uint256 presentValue = Rent.mul(
-            (1e18 - ((1e18 + annualRiskFreeInterestRate).inv().powu(12e18)))
-                .div(annualRiskFreeInterestRate)
-        );
-        return presentValue;
-    }
-
-    function getInterestRate() public view returns (uint256) {
-        int256 ETH_APR_90d;
-        (
-            ,
-            /* uint80 roundID */ ETH_APR_90d,
-            /*uint startedAt*/
-            /*uint timeStamp*/
-            /*uint80 answeredInRound*/
-            ,
-            ,
-
-        ) = dataFeed.latestRoundData();
-        uint256 annualRiskFreeInterestRate = uint256(ETH_APR_90d) * (1e11);
-        return annualRiskFreeInterestRate;
     }
 }

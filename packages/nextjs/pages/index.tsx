@@ -1,58 +1,71 @@
-import Link from "next/link";
+import { useState } from "react";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 import type { NextPage } from "next";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { MetaHeader } from "~~/components/MetaHeader";
+import RoleSelection from "~~/components/RoleSelection";
+import { UserTypeContext } from "~~/contexts/useGlobalInfo";
 
 const Home: NextPage = () => {
+  const { setUserType } = useContext(UserTypeContext);
+  const router = useRouter();
+  const handleRoleSelect = (event: React.MouseEvent<HTMLButtonElement>, role: string) => {
+    event.preventDefault();
+
+    if (role) {
+      // console.log(userType, "\n this is from roleselection component1!!!");
+      setUserType(role);
+      // console.log(userType, "\n this is from roleselection component2!!!");
+      if (role === "tenant") {
+        router.push("/houserecommend");
+      } else if (role === "landlord") {
+        router.push("/landlordManagement");
+      } else if (role === "investor") {
+        router.push("/marketplace");
+      }
+    }
+  };
   return (
     <>
-      <MetaHeader />
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center mb-8">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/pages/index.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
-        </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contract
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
+      <div
+        className="hero min-h-screen bg-base-200"
+        style={{
+          backgroundImage:
+            "url(https://cdn.discordapp.com/attachments/1008571118694703204/1180766833909964850/rentfi_Animation_style_the_content_of_the_picture_is_of_a_bustl_a510c078-18bc-4529-920d-3bb3ce67ded1.png?ex=657e9dce&is=656c28ce&hm=c039b5275bd3767e7266eefce87fde5b054ccb352a65b287870eca1c6a6252ed&)",
+        }}
+      >
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl font-bold text-white">Login now and choose your identity!</h1>
+            <p className="text-white text-2xl">Welcome to RentFi, a rental platform built on blockchain.</p>
+            <p className="py-2 text-white text-2xl italic font-bold">
+              Make transactions more transparent and earn more.
+            </p>
+          </div>
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <form className="card-body">
+              <h2 className="text-center lg:text-left text-2xl font-bold text-3xl">Who Are You?</h2>
+              <div className="form-control">
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary" onClick={event => handleRoleSelect(event, "tenant")}>
+                    Tenant
+                  </button>
+                </div>
+              </div>
+              <div className="form-control mt-6">
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary" onClick={event => handleRoleSelect(event, "landlord")}>
+                    Landlord
+                  </button>
+                </div>
+              </div>
+              <div className="form-control mt-6">
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary" onClick={event => handleRoleSelect(event, "investor")}>
+                    Investor
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

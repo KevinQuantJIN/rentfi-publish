@@ -36,5 +36,10 @@
     "husky": "~8.0.3",
     "lint-staged": "~13.2.2"
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.2.3",
+  "dependencies": {
+    "@aave/core-v3": "^1.18.0",
+    "@chainlink/contracts": "^0.8.0",
+    "@prb/math": "^2.5.0"
+  }
 }

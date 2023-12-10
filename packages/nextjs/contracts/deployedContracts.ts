@@ -4,6 +4,1430 @@
  */
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
-const deployedContracts = {} as const;
+const deployedContracts = {
+  11155111: {
+    RentalAgreement: {
+      address: "0x441A81316021233248b4e138a4527A85265ed4c3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_landlord",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_tenantAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_rent",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_deposit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rentGuarantee",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_tokenUsedToPay",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "_houseName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_houseAddress",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_leaseTerm",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_addressesProvider",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_rentalCashFlowNFTaddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "returnedToTenant",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "returnToLandlord",
+              type: "uint256",
+            },
+          ],
+          name: "EndRental",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "depositLocked",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rentGuaranteeLocked",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "firstMonthRentPaid",
+              type: "uint256",
+            },
+          ],
+          name: "TenantEnteredAgreement",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "withdrawedFunds",
+              type: "uint256",
+            },
+          ],
+          name: "WithdrawUnpaidRent",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "ADDRESSES_PROVIDER",
+          outputs: [
+            {
+              internalType: "contract IPoolAddressesProvider",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "POOL",
+          outputs: [
+            {
+              internalType: "contract IPool",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "deposit",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_amountOfDepositBack",
+              type: "uint256",
+            },
+          ],
+          name: "endRental",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_landlordAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_deposit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rentGuarantee",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rent",
+              type: "uint256",
+            },
+          ],
+          name: "enterAgreementAsTenant",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_userAddress",
+              type: "address",
+            },
+          ],
+          name: "getTotalCollateralBase",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "houseAddress",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "houseName",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "landlord",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "leaseTerm",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "mintRentalAgreementAsNFT",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "nextRentDueTimestamp",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "payRent",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rent",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rentGuarantee",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rentalCashFlowNFT",
+          outputs: [
+            {
+              internalType: "contract RentalCashFlowNFT",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tenant",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tokenAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tokenUsedForPayments",
+          outputs: [
+            {
+              internalType: "contract IERC20",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "withdrawUnpaidRent",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    RentalCashFlowNFT: {
+      address: "0x6e3d3af77a9fA2e6d0B9055126eB598d22E08a45",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "prod1",
+              type: "uint256",
+            },
+          ],
+          name: "PRBMath__MulDivFixedPointOverflow",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "prod1",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "denominator",
+              type: "uint256",
+            },
+          ],
+          name: "PRBMath__MulDivOverflow",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "seller",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "price",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "currentlyListed",
+              type: "bool",
+            },
+          ],
+          name: "TokenListedSuccess",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "Rent",
+              type: "uint256",
+            },
+          ],
+          name: "calculateInitialPrice",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "executeSale",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getAllNFTs",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "tokenId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address payable",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "address payable",
+                  name: "seller",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "price",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "currentlyListed",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "rentalAgreementAddress",
+                  type: "address",
+                },
+              ],
+              internalType: "struct RentalCashFlowNFT.ListedToken[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getCurrentToken",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getInterestRate",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getLatestIdToListedToken",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "tokenId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address payable",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "address payable",
+                  name: "seller",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "price",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "currentlyListed",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "rentalAgreementAddress",
+                  type: "address",
+                },
+              ],
+              internalType: "struct RentalCashFlowNFT.ListedToken",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getListedTokenForId",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "tokenId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address payable",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "address payable",
+                  name: "seller",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "price",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "currentlyListed",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "rentalAgreementAddress",
+                  type: "address",
+                },
+              ],
+              internalType: "struct RentalCashFlowNFT.ListedToken",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getMyNFTs",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "tokenId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address payable",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "address payable",
+                  name: "seller",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "price",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "currentlyListed",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "rentalAgreementAddress",
+                  type: "address",
+                },
+              ],
+              internalType: "struct RentalCashFlowNFT.ListedToken[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getNFTById",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "landlord",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "tenant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "rentalAgreementAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "rent",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "deposit",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "rentGuarantee",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "leaseTerm",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "houseName",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "houseAddress",
+                  type: "string",
+                },
+                {
+                  internalType: "address",
+                  name: "tokenAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "initialPrice",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct RentalCashFlowNFT.RentalAgreementDetails",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "idTorentalAgreements",
+          outputs: [
+            {
+              internalType: "address",
+              name: "landlord",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "tenant",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "rentalAgreementAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "rent",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "deposit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "rentGuarantee",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "leaseTerm",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "houseName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "houseAddress",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "tokenAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "initialPrice",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "landlord",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "tenant",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "rentalAgreementAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "rent",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "deposit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "rentGuarantee",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "leaseTerm",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "houseName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "houseAddress",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "tokenAddress",
+              type: "address",
+            },
+          ],
+          name: "safeMint",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "tokenToRentalAgreement",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        approve: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        balanceOf: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        getApproved: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        isApprovedForAll: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        name: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        ownerOf: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        safeTransferFrom: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        setApprovalForAll: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        supportsInterface: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        symbol: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        tokenURI: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        transferFrom: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+      },
+    },
+    RentalFactory: {
+      address: "0xD0c9dEAACe67FE68eC868e558beb5234D3a61A1f",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "contractAddress",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "landlord",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "tenant",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "houseName",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "houseAddress",
+              type: "string",
+            },
+          ],
+          name: "NewRentalDeployed",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_tenantAddress",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_rent",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_deposit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rentGuarantee",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_tokenUsedToPay",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "_houseName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_houseAddress",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_leaseTerm",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_addressesProvider",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_rentalCashFlowNFTaddress",
+              type: "address",
+            },
+          ],
+          name: "createNewRental",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "getRentalsCountByOwner",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "rentalsByOwner",
+          outputs: [
+            {
+              internalType: "contract RentalAgreement",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
+} as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;

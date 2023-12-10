@@ -1,0 +1,115 @@
+{
+    "houses": [
+      {
+        "houseId": 1,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0xE34D138fCEFb90817b3D47C70cc433Ea6d747eBa",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 2,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0xE34D138fCEFb90817b3D47C70cc433Ea6d747eBa",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 3,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 4,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 5,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 6,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 7,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 8,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 9,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 10,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      },
+      {
+        "houseId": 11,
+        "houseName": "Cozy Apartment",
+        "rent": 1200,
+        "gurantee": 1000,
+        "houseAddress": "123 Main St",
+        "landlord": "0x123abc",
+        "Pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNkfKSHX3NT1TLEp9P97dNBqBINBqGvwgoog&usqp=CAU",
+        "deposit": 500
+      }
+    ]
+  }
+  
